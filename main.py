@@ -13,15 +13,14 @@ def start(message: Message):
 
 @bot.message_handler(regexp='Погода ☁')
 def start_weather(message: Message):
-    bot.send_message(message.chat.id, 'Введите город: ')
+    bot.send_message(message.chat.id, 'Введите координаты только в таком формате (55.4445; 12.5465)')
 
 @bot.message_handler(content_types=['text'])
 def city(message: Message):
     chat_id = message.chat.id
     city = message.text
     answer = get_weather(city)
-    bot.send_message(chat_id, answer, reply_markup=weather() )
-
+    bot.send_message(chat_id, answer, reply_markup=weather())
 
 
 
